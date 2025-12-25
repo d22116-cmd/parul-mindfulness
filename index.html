@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PARUL Mindfulness Companion</title>
+    <title>EKAGRATA - Science-Based Mindfulness Platform | Parul University</title>
     <style>
         * {
             margin: 0;
@@ -28,11 +28,26 @@
         /* Header */
         .header {
             text-align: center;
-            padding: 30px 0;
+            padding: 30px 20px;
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             margin-bottom: 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
 
         .logo {
@@ -43,6 +58,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin: 0 15px;
         }
 
         .subtitle {
@@ -50,6 +66,12 @@
             color: #ccc;
             margin-top: 10px;
             letter-spacing: 2px;
+        }
+
+        .developed-by {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
         }
 
         /* Camera Section */
@@ -405,13 +427,48 @@
             flex-wrap: wrap;
             margin: 20px 0;
         }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .powered-by-text {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .yogax-footer-logo {
+            height: 30px;
+            width: auto;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <!-- Welcome Modal -->
     <div id="welcomeModal" class="modal active">
         <div class="modal-content">
-            <div class="modal-header">Welcome to PARUL Mindfulness</div>
+            <div class="modal-header">Welcome to EKAGRATA</div>
+            <p style="text-align: center; color: #ccc; margin-bottom: 20px; font-size: 14px;">Science-Based Mindfulness Platform</p>
             <form id="userForm">
                 <div class="form-group">
                     <label>Full Name</label>
@@ -450,8 +507,13 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="logo">PARUL</div>
-            <div class="subtitle">MINDFULNESS COMPANION</div>
+            <div class="logo-container">
+                <img src="parullogo.jpg" alt="Parul University" class="logo-img">
+                <div class="logo">EKAGRATA</div>
+                <img src="Yogaxlogo.png" alt="YogaXBiofeedback" class="logo-img">
+            </div>
+            <div class="subtitle">Science-Based Mindfulness Platform</div>
+            <div class="developed-by">Developed for Parul University</div>
             <div id="userGreeting" class="hidden" style="margin-top: 15px; font-size: 18px;"></div>
         </div>
 
@@ -559,6 +621,18 @@
                 <button id="shareBtn" class="btn btn-primary">📤 Share Progress</button>
             </div>
         </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="powered-by">
+                <span class="powered-by-text">Powered by</span>
+                <img src="Yogaxlogo.png" alt="YogaXBiofeedback" class="yogax-footer-logo">
+                <span class="powered-by-text" style="font-weight: 600; color: #4A90E2;">YogaXBiofeedback Pvt. Ltd.</span>
+            </div>
+            <div class="copyright">
+                © 2024 Parul University | All rights reserved
+            </div>
+        </div>
     </div>
 
     <script>
@@ -617,7 +691,7 @@
         });
 
         function loadUserData() {
-            const saved = localStorage.getItem('parulUserData');
+            const saved = localStorage.getItem('ekagrataUserData');
             if (saved) {
                 userData = JSON.parse(saved);
                 welcomeModal.classList.remove('active');
@@ -626,7 +700,7 @@
         }
 
         function saveUserData() {
-            localStorage.setItem('parulUserData', JSON.stringify(userData));
+            localStorage.setItem('ekagrataUserData', JSON.stringify(userData));
         }
 
         function setupEventListeners() {
@@ -862,7 +936,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Parul_Mindfulness_Report_${new Date().toISOString().split('T')[0]}.txt`;
+            a.download = `Ekagrata_Wellness_Report_${new Date().toISOString().split('T')[0]}.txt`;
             a.click();
         }
 
@@ -886,14 +960,15 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Parul_Mindfulness_Data_${new Date().toISOString().split('T')[0]}.csv`;
+            a.download = `Ekagrata_Wellness_Data_${new Date().toISOString().split('T')[0]}.csv`;
             a.click();
         }
 
         function generateReport() {
             return `
 ═══════════════════════════════════════════════════════
-        PARUL MINDFULNESS COMPANION
+        EKAGRATA
+        Science-Based Mindfulness Platform
         PERSONAL WELLNESS REPORT
 ═══════════════════════════════════════════════════════
 
@@ -930,18 +1005,18 @@ RECOMMENDATIONS
 ✓ Track your progress weekly
 ✓ Share achievements with friends
 
-Generated by PARUL Mindfulness Companion
+Generated by EKAGRATA - Powered by YogaXBiofeedback Pvt. Ltd.
 © ${new Date().getFullYear()} Parul University
 ═══════════════════════════════════════════════════════
             `;
         }
 
         function shareProgress() {
-            const text = `I've completed ${userData.stats.totalSessions} mindfulness sessions with PARUL Mindfulness Companion! 🧘\n\nTotal Practice: ${Math.round(userData.stats.totalMinutes)} minutes\nStress Reduction: ${userData.stats.avgStressReduction}%\nStreak: ${userData.stats.currentStreak} days\n\nJoin me in building a healthier, calmer campus! 🌟`;
+            const text = `I've completed ${userData.stats.totalSessions} mindfulness sessions with EKAGRATA! 🧘\n\nTotal Practice: ${Math.round(userData.stats.totalMinutes)} minutes\nStress Reduction: ${userData.stats.avgStressReduction}%\nStreak: ${userData.stats.currentStreak} days\n\nJoin me in building a healthier, calmer campus! 🌟\n\nPowered by YogaXBiofeedback`;
             
             if (navigator.share) {
                 navigator.share({
-                    title: 'My Mindfulness Progress',
+                    title: 'My Mindfulness Progress - EKAGRATA',
                     text: text
                 });
             } else {
